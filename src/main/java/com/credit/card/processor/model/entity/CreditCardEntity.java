@@ -23,15 +23,15 @@ public class CreditCardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable=false)
     private String name;
 
-    @Column(name = "card_number")
+    @Column(name = "card_number", nullable=false)
     private String cardNumber;
 
     @Column(name = "balance")
     private Integer balance;
 
-    @Column(name = "account_limit")
+    @Column(name = "account_limit", nullable=false)
     private Integer accountLimit;
 }

@@ -8,11 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
@@ -32,14 +29,14 @@ public class CreditCardController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<?> getAllCardsInformation() {
+    public ResponseEntity<?> getAllCreditCards() {
         log.trace("Getting all the credit card information");
         List<CreditCardOutput> creditCardOutputList = creditCardService.getAllCardRecords();
         return new ResponseEntity<>(creditCardOutputList, HttpStatus.OK);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<?> createNewCreditCard(@Valid @RequestBody final CreditCardInput creditCardInput) {
+    public ResponseEntity<?> createNewCreditCard(@RequestBody final CreditCardInput creditCardInput) {
         log.trace("Saving new credit card");
         CreditCardOutput output = creditCardService.saveNewCreditCard(creditCardInput);
 
