@@ -37,6 +37,7 @@ public class CreditCardService {
             .orElseThrow( () ->
                 new CreditCardAlreadyExistsException(String.format("Credit card with this number already exists %s.",
                     creditCardInput.getCardNumber())));
+
         return EntityToOutputConverter.convertCreditCardsEntityToOutput(entityToSave);
     }
 

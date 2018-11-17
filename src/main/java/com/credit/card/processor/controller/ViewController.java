@@ -10,7 +10,7 @@ public class ViewController {
 
     @RequestMapping("/")
     String home(ModelMap modal) {
-        modal.addAttribute("title","CRUD Example");
+        modal.addAttribute("title","Credit card system");
         return "index";
     }
 
