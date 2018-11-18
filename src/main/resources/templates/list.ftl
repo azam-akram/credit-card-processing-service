@@ -22,7 +22,9 @@
 							<div class="form-group col-md-12">
 								<label class="col-md-4 control-lable" for="cardNumber">Card Number</label>
 								<div class="col-md-8">
-									<input type="text" ng-model="ctrl.creditCardInput.cardNumber" id="cardNumber" class="form-control input-sm" placeholder="Enter card number." required/>
+									<input type="text" ng-model="ctrl.creditCardInput.cardNumber" id="cardNumber"
+                                           minlength='11' maxlength='19' data-ng-pattern='ctrl.onlyNumbers'
+										   class="form-control input-sm" placeholder="Enter credit card number." required/>
 								</div>
 							</div>
 						</div>

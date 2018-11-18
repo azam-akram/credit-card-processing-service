@@ -19,6 +19,7 @@ angular.module('creditCardApp').controller('CreditCardController',
 
         function submit() {
             console.log('Saving New credit card');
+            validateCardNumberByLuhn10(self.creditCardInput)
             addCreditCard(self.creditCardInput);
         }
 
@@ -45,4 +46,36 @@ angular.module('creditCardApp').controller('CreditCardController',
         function getAllCreditCard(){
             return CreditCardService.getAllCreditCard();
         }
+
+        function validateCardNumberByLuhn10(creditCardInput) {
+            console.log('Validating card number');
+            var cardNumber = creditCardInput.cardNumber;
+            var allArray = [];
+            var indexAll = 0;
+            var sum = 0;
+            var checked;
+
+            for (var i = cardNumber.length - 2; i >= 0; i -= 1) {
+                allArray[indexAll]
+                var num = parseInt(cardNumber.charAt(i), 10);
+                if (i % 2 == 1) {
+                    num = num*2;
+                    if(num > 9) {
+                        num = num - 9;
+                    }
+                }
+                allArray[indexAll] = num;
+                sum += num;
+                indexAll++;
+            }
+
+            checked = sum * 9 % 10;
+            var checksum = sum + checked;
+            if(checksum % 10 == 0) {
+                console.log("Valid");
+            } else {
+                console.log("Invalid");
+            }
+        }
+
     }]);
