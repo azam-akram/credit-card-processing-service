@@ -53,7 +53,7 @@ Now we are set to build the docker image and run credit card processing service 
 ```bash
     docker-compose up
 ```
-verify if credit card image is created,
+verify if credit card image is created. Image list should have credit-card-service image.
 ```bash
     docker images
 ```

@@ -1,6 +1,7 @@
 var app = angular.module('creditCardApp',['ui.router','ngStorage']);
 
-app.constant('urls', { CREDIT_CARD_SERVICE_URL : 'http://127.0.0.1:9999/credit-card-processing-service/v1/card' });
+app.constant('urls', {
+    CREDIT_CARD_SERVICE_URL : '/credit-card-processing-service/v1/card' });
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
