@@ -1,8 +1,7 @@
 # Credit Card Processing Service
 
-This application demonstrates the basics of how to add new credit card information in the system. The service includes end-to-end implementation, i.e. taking credit card information from user on a web page and saving it in the database. It also displays existing credit card information.
-
-The backend of the system is developed in Java using Spring Boot and the front-end page is written using AngularJS.
+This application demonstrates the basics of adding new credit card information in the system. The service includes end-to-end implementation, i.e. taking credit card information from user on a web page and saving it in to database. It also displays existing credit card information.
+The backend of the system is developed in Java using Spring Boot and the front-end page is written in AngularJS.
 The communication between backend and frontend happens through REST APIs.
 ### Technology used
 - Spring Boot
@@ -13,16 +12,14 @@ The communication between backend and frontend happens through REST APIs.
 - Freemarker
 - Gradle
 - Mockito
-
+- Heroku
 ### Build the application
 
 Use gradle wrapper to build this,
 ```
 gradlew clean build
 ```
-
 ### Run application outside docker container
-
 - First, run the CreditCardApplication,
 - In order to use credit card processing service application, go to 
 ```
@@ -61,9 +58,16 @@ go to following page and you get an AngularJS page to display existing credit ca
 ```
 http://localhost:9999/credit-card-processing-service/v1/
 ```
+### Pushed to Docker Hub
 Docker image is also pushed to docker hub.
 ```
 https://hub.docker.com/r/azamakram/credit-card-service/
+```
+### Heroku deployment
+I have created a continous deployment pipe line from GitHub to Heroku cloud.
+The live view of application,
+```
+https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/
 ```
 ### REST Controller
 Credit card processing service exposes two REST end points,
@@ -72,15 +76,16 @@ Credit card processing service exposes two REST end points,
 ```
 HTTP Header: 
 Accept: application/json
-GET: http://127.0.0.1:9999/credit-card-processing-service/v1/card
+GET (running local): http://127.0.0.1:9999/credit-card-processing-service/v1/card
+GET (running local): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
 ```
-
 - Add new credit card
 ```
 HTTP Header: 
 Accept: application/json
 Content-Type: application/json
-POST: http://127.0.0.1:9999/credit-card-processing-service/v1/card
+GET (running local): http://127.0.0.1:9999/credit-card-processing-service/v1/card
+GET (running local): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
 body:
 {
 	"name":"Customer name",
