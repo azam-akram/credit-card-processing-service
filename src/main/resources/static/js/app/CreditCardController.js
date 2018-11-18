@@ -73,8 +73,10 @@ angular.module('creditCardApp').controller('CreditCardController',
             var checksum = sum + checked;
             if(checksum % 10 == 0) {
                 console.log("Valid");
+                // Just save this card
             } else {
-                console.log("Invalid");
+                console.log("Invalid credit card number");
+                self.errorMessage = 'Invalid credit card number: ' + cardNumber;
             }
         }
 
