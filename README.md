@@ -77,7 +77,7 @@ Credit card processing service exposes two REST end points,
 HTTP Header: 
 Accept: application/json
 GET (running local): http://127.0.0.1:9999/credit-card-processing-service/v1/card
-GET (running local): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
+GET (deployed on heroku): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
 ```
 - Add new credit card
 ```
@@ -85,7 +85,7 @@ HTTP Header:
 Accept: application/json
 Content-Type: application/json
 GET (running local): http://127.0.0.1:9999/credit-card-processing-service/v1/card
-GET (running local): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
+GET (deployed on heroku): https://credit-card-processing-service.herokuapp.com/credit-card-processing-service/v1/card
 body:
 {
 	"name":"Customer name",
