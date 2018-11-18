@@ -1,8 +1,8 @@
 # Credit Card Processing Service
 
-This application demonstrates the basics of how to add new credit card information in the system. The service includes end-to-end system, i.e. taking credit card information from user and save it in the database. It also displays existing credit card information.
+This application demonstrates the basics of how to add new credit card information in the system. The service includes end-to-end implementation, i.e. taking credit card information from user on a web page and saving it in the database. It also displays existing credit card information.
 
-The backend of the system is developed in Java using Spring Boot and the front-end page is written in AngularJS.
+The backend of the system is developed in Java using Spring Boot and the front-end page is written using AngularJS.
 The communication between backend and frontend happens through REST APIs.
 ### Technology used
 - Spring Boot
@@ -21,27 +21,25 @@ Use gradle wrapper to build this,
 gradlew clean build
 ```
 
-### Run application without docker container
+### Run application outside docker container
 
 - First, run the CreditCardApplication,
 - In order to use credit card processing service application, go to 
 ```
 http://localhost:9999/credit-card-processing-service/v1/
 ```
-### Build and run docker images
+### Build and run docker image
 The Dockerfile consists of all we need to create image of this application.
 ```Dockerfile
 FROM java:8
-MAINTAINER  Muhammad Azam Akram <akram.muhammadazam@gmail.com>
 EXPOSE 8080
 ADD build/libs/credit-card-processing-service-1.0-SNAPSHOT.jar /app/credit-card-processing-service.jar
 WORKDIR /app/
 CMD java -jar credit-card-processing-service.jar
 ```
-Following is the docker-compose.yml
+Following is the docker-compose.yml to build and run the application inside container,
 ```yaml
  version: '2.2'
- 
  services:
    credit-card-service:
      image: credit-card-service
@@ -55,17 +53,25 @@ Now we are set to build the docker image and run credit card processing service 
 ```bash
     docker-compose up
 ```
+verify if credit card image is created,
+```bash
+    docker images
+```
+go to following page and you get an AngularJS page to display existing credit cards and an input form to add more credit cards,
+```
+http://localhost:9999/credit-card-processing-service/v1/
+```
 ### REST Controller
-Call REST APIs,
+Credit card processing service exposes to REST end points,
 
-Get All existing credit cards information
+- Get All existing credit cards information
 ```
 HTTP Header: 
 Accept: application/json
 GET: http://127.0.0.1:9999/credit-card-processing-service/v1/card
 ```
 
-Add new credit card
+- Add new credit card
 ```
 HTTP Header: 
 Accept: application/json
@@ -78,8 +84,38 @@ body:
 	"accountLimit":100000
 }
 ```
-
 ### More details
+### Luhn10 implementation to verify the credit card number
+```javascript
+function validateCardNumberByLuhn10(creditCardInput) {
+	console.log('Validating card number');
+	var cardNumber = creditCardInput.cardNumber;
+	var allArray = [];
+	var indexAll = 0;
+	var sum = 0;
+	var checked;
+	for (var i = cardNumber.length - 2; i >= 0; i -= 1) {
+	allArray[indexAll]
+	var num = parseInt(cardNumber.charAt(i), 10);
+	if (i % 2 == 1) {
+	    num = num*2;
+	    if(num > 9) {
+		num = num - 9;
+	    }
+	}
+	allArray[indexAll] = num;
+	sum += num;
+	indexAll++;
+	}
+	checked = sum * 9 % 10;
+	var checksum = sum + checked;
+	if(checksum % 10 == 0) {
+	console.log("Valid");
+	} else {
+	console.log("Invalid");
+	}
+}
+```
 
 #### Database modeling
 ```java
