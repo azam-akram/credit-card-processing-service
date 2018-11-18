@@ -61,6 +61,10 @@ go to following page and you get an AngularJS page to display existing credit ca
 ```
 http://localhost:9999/credit-card-processing-service/v1/
 ```
+Docker image is also pushed to docker hub.
+```
+https://hub.docker.com/r/azamakram/credit-card-service/
+```
 ### REST Controller
 Credit card processing service exposes two REST end points,
 
