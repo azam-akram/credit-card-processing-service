@@ -26,6 +26,12 @@ pipeline{
                 bat label: '', script: 'gradlew check'
             }
         }
+        
+        stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+        }
 
         stage ("Deploying") {
             steps {
