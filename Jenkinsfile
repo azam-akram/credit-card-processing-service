@@ -25,7 +25,7 @@ pipeline{
         stage ("Deploying") {
             steps {
                 echo "Deploying project";
-                bat label: '', script: 'docker-compose up'
+                //bat label: '', script: 'docker-compose up'
             }
         }
     }
