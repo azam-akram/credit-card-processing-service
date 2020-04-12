@@ -1,24 +1,29 @@
 pipeline{
     agent any
+    
+    environment {
+        GIT_REPO_URL = 'https://github.com/azam-akram/credit-card-processing-service.git'
+    }
+
     stages {
         stage ("Git checkout") {
             steps {
                 echo "Checking out code from GIT";
-                git 'https://github.com/azam-akram/credit-card-processing-service.git'
+                git ${GIT_REPO_URL}
             }
         }
 
         stage ("Building") {
             steps {
                 echo "Building the source code";
-                bat label: '', script: 'gradlew clean build'
+                //bat label: '', script: 'gradlew clean build'
             }
         }
 
         stage ("Unit testing") {
             steps {
                 echo "Unit testing";
-                bat label: '', script: 'gradlew test'
+                bat label: '', script: 'gradlew check'
             }
         }
 
@@ -32,6 +37,8 @@ pipeline{
     post {
         always {
             echo 'This will always run'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+            junit 'build/reports/**/*.xml'
         }
         success {
             echo 'This will run only if successful'
