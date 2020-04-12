@@ -9,7 +9,7 @@ pipeline{
         stage ("Git checkout") {
             steps {
                 echo "Checking out code from GIT";
-                git ${GIT_REPO_URL}
+                git "${GIT_REPO_URL}"
             }
         }
 
