@@ -1,6 +1,10 @@
 pipeline{
     agent any
     
+    parameters {
+        choice(choices: ['dev','prod'], name: 'ENV_NAME', description: 'Environment name')
+    }
+    
     environment {
         GIT_REPO_URL = 'https://github.com/azam-akram/credit-card-processing-service.git'
     }
@@ -35,7 +39,7 @@ pipeline{
 
         stage ("Deploying") {
             steps {
-                echo "Deploying project";
+                echo "Deploying project on ${ENV_NAME}";
                 //bat label: '', script: 'docker-compose up'
             }
         }
