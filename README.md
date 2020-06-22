@@ -1,7 +1,5 @@
 # Credit Card Processing Service
-
-This application demonstrates the basics of adding new credit card information in the system. The service includes end-to-end implementation, i.e. taking credit card information from user on a web page and saving it in to database. It also displays existing credit card information.
-The backend of the system is developed in Java using Spring Boot and the front-end page is written in AngularJS.
+This projects demonstrate a simple Angular JS front-end web application communicating to the backend system trough REST API. The web application takes input to register credit card, do some validation and pass to server to persist. This also containerise the application, push image to docker hub and deploy application to heroku cloud.
 The communication between backend and frontend happens through REST APIs.
 ### Technology used
 - Spring Boot
