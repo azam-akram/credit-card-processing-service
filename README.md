@@ -1,5 +1,5 @@
 # Credit Card Processing Service
-This projects demonstrate a simple Angular JS front-end web application communicating to the backend system trough REST API. The web application takes input to register credit card, do some validation and pass to server to persist. This also containerise the application, push image to docker hub and deploy application to heroku cloud.
+This projects demonstrate a simple Angular JS front-end web application communicating to the backend system through REST API. The web application takes input to register credit card, do some validation and pass to server to persist. This also containerise the application, push image to docker hub and deploy application to heroku cloud.
 The communication between backend and frontend happens through REST APIs.
 ### Technology used
 - Spring Boot
